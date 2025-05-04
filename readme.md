@@ -1,7 +1,7 @@
 # AI Math Tutor
 
 AI Math Tutor is a web application that helps users solve math problems up to Master's level, providing step-by-step solutions and generating similar problems for practice. It supports both text and image input (with OCR for math images), and features a modern, responsive frontend with dark mode.
-
+LIVE LINK : https://math-tutor-ai.onrender.com/
 ---
 
 ## Features
