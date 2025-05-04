@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Math Tutor</title>
+    
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Math Tutor</h1>
+            <p>Solve math problems up to Master's level with step-by-step solutions</p>
+            <div style="text-align:right;  margin-bottom: 10px;">
+                <button id="dark-mode-toggle" type="button" style="padding:6px 18px; border-radius:18px; border:none; background:#fff; color:#232946; font-weight:600; cursor:pointer;">
+                    🌙 Dark Mode
+                </button>
+            </div>
+        </header>
+        
+        <main>
+            <section class="input-section">
+                <form id="problem-form">
+                    <div class="form-group">
+                        <label for="problem-text">Enter your math problem:</label>
+                        <textarea id="problem-text" name="problem_text" placeholder="Type your math problem here... (e.g., Solve for x: 2x + 3 = 7, or upload a clear photo of your handwritten math problem)" rows="5"></textarea>
+                    </div>
+                    
+                    <div class="or-divider">
+                        <span>OR</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="problem-image">Upload an image of your math problem:</label>
+                        <input type="file" id="problem-image" name="problem_image" accept="image/*">
+                        <div class="image-preview" id="image-preview">
+                            <p>Preview will appear here</p>
+                        </div>
+                        <div class="ocr-note">
+                            <strong>Note:</strong> The OCR for math images is experimental and may not accurately capture all symbols, especially for handwritten or complex printed math. For best results, type your problem or use a clear, high-contrast printed image.
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="domain-select">Problem domain (optional):</label>
+                        <select id="domain-select" name="domain">
+                            <option value="general">General Mathematics</option>
+                            <option value="calculus">Calculus</option>
+                            <option value="linear_algebra">Linear Algebra</option>
+                            <option value="statistics">Statistics & Probability</option>
+                            <option value="differential_equations">Differential Equations</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" id="solve-button">Solve Problem</button>
+                </form>
+            </section>
+            
+            <section class="solution-section" id="solution-section">
+                <div class="solution-header">
+                    <h2>Solution</h2>
+                </div>
+                
+                <div class="loader" id="loader">
+                    <div class="spinner"></div>
+                    <p>Solving your problem...</p>
+                </div>
+                
+                <div class="problem-display" id="problem-display">
+                    <h3>Problem:</h3>
+                    <p id="problem-text-display"></p>
+                </div>
+                
+                <div class="solution-content" id="solution-content"></div>
+                
+                <button type="button" id="similar-button" style="margin-left: 10px;">Get Similar Problems</button>
+                <div class="similar-problems" id="similar-problems" style="margin-top:18px;"></div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>AI Math Tutor Prototype - Powered by Groq</p>
+        </footer>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
