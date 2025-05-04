@@ -1,9 +1,8 @@
-flask==2.3.3
-groq==0.4.0
-python-dotenv==1.0.0
-opencv-python==4.8.0.76
-pytesseract==0.3.10
-pillow==10.0.0
-sympy==1.12
-numpy==1.24.3
-rapid-latex-ocr==0.1.0
+flask
+groq
+python-dotenv
+opencv-python
+pytesseract
+pillow
+sympy
+numpy 
