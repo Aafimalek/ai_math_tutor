@@ -6,3 +6,4 @@ pytesseract
 pillow
 sympy
 numpy 
+requests
