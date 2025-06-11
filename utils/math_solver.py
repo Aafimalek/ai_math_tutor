@@ -1,3 +1,4 @@
+# math_solver.py
 from groq import Groq
 import os
 import logging
@@ -52,7 +53,7 @@ def solve_math_problem(problem_text, domain=None):
         
         # Call Groq API with Claude model (can also use llama3-70b-8192)
         completion = client.chat.completions.create(
-            model="llama3-70b-8192",  # You can try other models available on Groq
+            model="llama-3.3-70b-versatile",  # You can try other models available on Groq
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": formatted_problem}
@@ -83,7 +84,7 @@ def get_similar_problems(problem_text, domain=None, n=3):
             f"Original problem:\n{problem_text}"
         )
         completion = client.chat.completions.create(
-            model="llama3-70b-8192",
+            model="llama-3.3-70b-versatile",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}

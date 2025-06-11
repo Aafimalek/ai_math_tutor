@@ -1,3 +1,4 @@
+# domain_prompts.py
 """Domain-specific prompts for different types of math problems"""
 
 DOMAIN_PROMPTS = {
