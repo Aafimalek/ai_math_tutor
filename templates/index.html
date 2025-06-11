@@ -5,30 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Math Tutor</title>
     
+    <!-- Google Fonts: Inter and Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- MathJax for LaTeX rendering -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Consider adding an icon library like Font Awesome here -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>AI Math Tutor</h1>
-            <p>Solve math problems up to Master's level with step-by-step solutions</p>
-            <div style="text-align:right;  margin-bottom: 10px;">
-                <button id="dark-mode-toggle" type="button" style="padding:6px 18px; border-radius:18px; border:none; background:#fff; color:#232946; font-weight:600; cursor:pointer;">
-                    🌙 Dark Mode
-                </button>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <!-- You can replace text with an <img> tag for a logo -->
+                <span class="logo-icon">∑</span> <!-- Placeholder icon -->
+                AI Math Tutor
             </div>
+            <button id="dark-mode-toggle" type="button" class="dark-mode-button">
+                <span class="icon-placeholder">🌙</span> <!-- Placeholder icon -->
+                <span class="toggle-text">Dark Mode</span>
+            </button>
         </header>
         
-        <main>
-            <section class="input-section">
+        <main class="app-main">
+            <section class="input-card">
+                <h2>Solve Your Math Problem</h2>
+                <p class="subtitle">Enter your problem below or upload an image.</p>
+                
                 <form id="problem-form">
                     <div class="form-group">
-                        <label for="problem-text">Enter your math problem:</label>
-                        <textarea id="problem-text" name="problem_text" placeholder="Type your math problem here... (e.g., Solve for x: 2x + 3 = 7, or upload a clear photo of your handwritten math problem)" rows="5"></textarea>
+                        <label for="problem-text">Type your problem:</label>
+                        <textarea id="problem-text" name="problem_text" placeholder="e.g., Solve for x: 2x + 3 = 7" rows="4"></textarea>
                     </div>
                     
                     <div class="or-divider">
@@ -36,13 +48,20 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="problem-image">Upload an image of your math problem:</label>
-                        <input type="file" id="problem-image" name="problem_image" accept="image/*">
+                        <label for="problem-image">Upload an image:</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="problem-image" name="problem_image" accept="image/*" class="file-input">
+                            <label for="problem-image" class="file-upload-button">
+                                <span class="icon-placeholder">🖼️</span> <!-- Placeholder icon for upload -->
+                                Choose Image
+                            </label>
+                            <span id="file-name-display" class="file-name-display">No file chosen</span>
+                        </div>
                         <div class="image-preview" id="image-preview">
-                            <p>Preview will appear here</p>
+                            <!-- Preview will appear here -->
                         </div>
                         <div class="ocr-note">
-                            <strong>Note:</strong> The OCR for math images is experimental and may not accurately capture all symbols, especially for handwritten or complex printed math. For best results, type your problem or use a clear, high-contrast printed image.
+                            <strong>Note:</strong> For best results with image uploads, use clear, high-contrast printed math.
                         </div>
                     </div>
                     
@@ -57,11 +76,14 @@
                         </select>
                     </div>
                     
-                    <button type="submit" id="solve-button">Solve Problem</button>
+                    <button type="submit" id="solve-button" class="submit-button">
+                        <span class="icon-placeholder">✔️</span> <!-- Placeholder icon for submit -->
+                        Solve Problem
+                    </button>
                 </form>
             </section>
             
-            <section class="solution-section" id="solution-section">
+            <section class="solution-area" id="solution-section">
                 <div class="solution-header">
                     <h2>Solution</h2>
                 </div>
@@ -76,15 +98,24 @@
                     <p id="problem-text-display"></p>
                 </div>
                 
-                <div class="solution-content" id="solution-content"></div>
+                <div class="solution-content" id="solution-content">
+                    <!-- Solution will be injected here -->
+                </div>
                 
-                <button type="button" id="similar-button" style="margin-left: 10px;">Get Similar Problems</button>
-                <div class="similar-problems" id="similar-problems" style="margin-top:18px;"></div>
+                <div class="similar-problems-container">
+                     <button type="button" id="similar-button" class="secondary-button">
+                        <span class="icon-placeholder">🔄</span> <!-- Placeholder icon -->
+                        Get Similar Problems
+                    </button>
+                    <div class="similar-problems" id="similar-problems">
+                        <!-- Similar problems will be injected here -->
+                    </div>
+                </div>
             </section>
         </main>
         
-        <footer>
-            <p>AI Math Tutor Prototype - Powered by Groq</p>
+        <footer class="app-footer">
+            <p>&copy; 2025 AI Math Tutor. Powered by Groq.</p>
         </footer>
     </div>
     
